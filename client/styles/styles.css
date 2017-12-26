@@ -116,6 +116,33 @@ a:hover {
 
 
 /***********************************************
+  $movie detail
+***********************************************/
+
+.singlemovie {
+    margin: auto;
+    position: absolute;
+    background-color: white;
+    opacity: 0.75;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    padding: 5%;
+    margin-bottom: auto;
+    color: black;
+}
+
+.singlemovie a {
+    color: #CF1C1D;
+    text-decoration: underline;
+}
+
+.singlemovie a:hover {
+    color: black;
+}
+
+
+/***********************************************
   $footer
 ***********************************************/
 

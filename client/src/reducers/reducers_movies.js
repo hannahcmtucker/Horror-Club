@@ -1,9 +1,11 @@
-import { FETCH_MOVIES } from '../actions/index';
+import { FETCH_MOVIES, FETCH_MOVIE } from '../actions/index';
 
 export default (state = {}, action) => {
   switch (action.type){
     case FETCH_MOVIES:
       return mapKeys(action.payload.data, 'id');
+    case FETCH_MOVIE:
+      return { ...state, [action.payload.data[0].id]: action.payload.data[0] }
     default:
       return state;  
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
+
 import { fetchMovies } from '../actions/index';
 import NavBar from '../components/nav_bar';
 import Footer from '../components/footer';
@@ -23,7 +25,9 @@ class MoviesIndex extends Component{
       return (
           <div className="movie_container" key={movie.id}>
             <section className="movie">
-              <h2 className="movie__title">{movie.title}</h2>
+              <Link to={`/movie/${movie.id}`}>
+                <h2 className="movie__title">{movie.title}</h2>
+              </Link>
               <p className="movie__year">{movie.year}</p>
             </section>
           </div>
