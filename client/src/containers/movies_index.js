@@ -6,14 +6,18 @@ import { Link } from 'react-router-dom';
 import { fetchMovies } from '../actions/index';
 import NavBar from '../components/nav_bar';
 import Footer from '../components/footer';
+import ReduxForm from './add_movie_form';
 
 class MoviesIndex extends Component{
   render(){
     return (
       <div>
         <NavBar />
-          <div className='movies_section'>
-            {this.renderMovies()}
+          <div className='flex_container'>
+            <ReduxForm />
+            <div className='movies_section'>
+              {this.renderMovies()}
+            </div>
           </div>
         <Footer />  
       </div>

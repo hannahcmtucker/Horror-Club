@@ -95,6 +95,53 @@ a:hover {
   $movies index 
 ***********************************************/
 
+.flex_container {
+    display: flex;
+    margin-bottom: auto;
+}
+
+.sidebar {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar__form,
+.sidebar__header {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar__header {
+    margin: 0.75em 0 0 0;
+    font-size: 1em;
+    color: black;
+}
+
+.sidebar__form input {
+    width: 100% !important;
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 0.8em;
+    text-align: center;
+    height: 3rem;
+    margin: 0.75em auto;
+    border: 1px solid white;
+    background: white;
+    border-radius: 5px;
+}
+
+.sidebar_submit {
+    background-color: #0C120C !important;
+    border: 1px solid #0C120C !important;
+    color: white;
+}
+
 .movies_section {
     width: 100%;
     height: 80vh;
