@@ -13,15 +13,92 @@ html {
 }
 
 body {
+    background-image: url(../public/images/background.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     flex: 1;
     height: 100vh;
     color: white;
-    font-family: sans-serif;
+    font-family: 'Cairo', sans-serif;
     letter-spacing: 1px;
     background-position: bottom;
 }
+
+
+/*General */
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/***********************************************
+  $navbar
+***********************************************/
+
+.navbar {
+    padding: 1rem 0;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #0C120C;
+    color: #CF1C1D;
+    box-shadow: 2px 1px 2px grey;
+    margin-bottom: 1.5em;
+}
+
+.navbar__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar__title {
+    display: flex;
+    margin-left: 20px;
+    margin-right: auto;
+    font-size: 1em;
+}
+
+.navbar__title * {
+    margin: 0 0.2em;
+}
+
+.navbar__title a {
+    margin-left: 0.5em;
+    color: #CF1C1D;
+}
+
+.navbar__title a:hover {
+    color: white;
+}
+
+.navbar__title h3 {
+    font-size: 1.5rem;
+    display: inline;
+}
+
+.flex_container {
+    display: flex;
+    margin-bottom: auto;
+}
+
+.hand_img {
+    height: 40px;
+    display: inline;
+}
+
+
+/***********************************************
+  $movies index 
+***********************************************/
 
 .movies_section {
     width: 100%;

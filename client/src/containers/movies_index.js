@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchMovies } from '../actions/index';
+import NavBar from '../components/nav_bar';
 
 class MoviesIndex extends Component{
   render(){
     return (
-      <div className='movies_section'>
+      <div>
+        <NavBar></NavBar>
+          <div className='movies_section'>
             {this.renderMovies()}
+          </div>
       </div>
     );
   }
@@ -15,12 +19,12 @@ class MoviesIndex extends Component{
   renderMovies(){
     return _.map(this.props.movies, movie => {
       return (
-        <div className="movie_container" key={movie.id}>
-          <section className="movie">
-            <h2 className="movie__title">{movie.title}</h2>
-            <p className="movie__year">{movie.year}</p>
-          </section>
-        </div>
+          <div className="movie_container" key={movie.id}>
+            <section className="movie">
+              <h2 className="movie__title">{movie.title}</h2>
+              <p className="movie__year">{movie.year}</p>
+            </section>
+          </div>
       );
     })
   }
