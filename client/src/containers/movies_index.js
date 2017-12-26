@@ -3,15 +3,17 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchMovies } from '../actions/index';
 import NavBar from '../components/nav_bar';
+import Footer from '../components/footer';
 
 class MoviesIndex extends Component{
   render(){
     return (
       <div>
-        <NavBar></NavBar>
+        <NavBar />
           <div className='movies_section'>
             {this.renderMovies()}
           </div>
+        <Footer />  
       </div>
     );
   }

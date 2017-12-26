@@ -85,12 +85,7 @@ a:hover {
     display: inline;
 }
 
-.flex_container {
-    display: flex;
-    margin-bottom: auto;
-}
-
-.hand_img {
+.navbar__handimg {
     height: 40px;
     display: inline;
 }
@@ -117,4 +112,17 @@ a:hover {
 
 .movie__title {
     color: #0C120C;
+}
+
+
+/***********************************************
+  $footer
+***********************************************/
+
+.footer {
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
