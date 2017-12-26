@@ -62,8 +62,7 @@ a:hover {
 
 .navbar__title {
     display: flex;
-    margin-left: 20px;
-    margin-right: auto;
+    margin: 0 20px;
     font-size: 1em;
 }
 

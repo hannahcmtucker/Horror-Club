@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
   .then (movies => {
     res.send(movies)
   })
+  .catch(console.log)
 })
 
 router.get('/movie/:id', (req, res, next) => {
@@ -17,6 +18,17 @@ router.get('/movie/:id', (req, res, next) => {
   .then (movie => {
     res.send(movie)
   })
+  .catch(console.log)
+})
+
+router.post('/addMovie', (req, res, next) => {
+  const { body } = req;
+  queries
+  .addMovie(body)
+  .then(id => {
+    res.send(id)
+  })
+  .catch(console.log)
 })
 
 module.exports = router;

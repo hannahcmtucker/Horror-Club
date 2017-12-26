@@ -22,8 +22,12 @@ export const fetchMovie = (id) => {
   }
 }
 
-export const addMovie = (values) => {
+export const addMovie = (values, cb) => {
+  const request = axios.post(`${ROOT_URL}/addMovie`, values)
+  .then((req) => cb(req))
+
   return {
     type: ADD_MOVIE,
+    payload: request
   }
 }

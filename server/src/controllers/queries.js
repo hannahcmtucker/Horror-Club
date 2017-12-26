@@ -8,7 +8,14 @@ const getMovie = (id) => {
   return db.query(`SELECT * FROM movies WHERE movies.id=$1`, [id])
 }
 
+const addMovie = (movie) => {
+  const { title, year, description } = movie;
+  return db.query(`INSERT INTO movies (title, year, description) VALUES($1,$2,$3) RETURNING ID`, [title, year, description])
+  .then(id => id[0])
+}
+
 module.exports = {
   getMovies,
-  getMovie
+  getMovie,
+  addMovie
 }

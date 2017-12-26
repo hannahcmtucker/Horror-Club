@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
+import { withRouter } from 'react-router'
 import { addMovie } from '../actions/index';
 
 class AddMovieForm extends Component {
@@ -43,12 +45,17 @@ class AddMovieForm extends Component {
   }
 
   onSubmit(values){
-    this.props.addMovie(values)
+    this.props.addMovie(values, (req) => {
+      const { id } = JSON.parse(req.request.response)
+      this.props.history.push(`/movie/${id}`)
+    })
   }
 }
 
 export default reduxForm({
   form: 'addMovieForm'
 })(
-  connect(null, { addMovie })(AddMovieForm)
+  withRouter(
+    connect(null, { addMovie })(AddMovieForm)
+  )  
 )
