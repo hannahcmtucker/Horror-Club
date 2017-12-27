@@ -141,6 +141,15 @@ a:hover {
     color: white;
 }
 
+.error__text {
+    color: #CF1C1D !important;
+    font-size: 0.85em;
+}
+
+.error__input {
+    box-shadow: 0 0 3px #CF1C1D;
+}
+
 .movies_section {
     width: 100%;
     height: 80vh;

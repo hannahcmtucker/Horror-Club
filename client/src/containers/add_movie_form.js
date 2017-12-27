@@ -37,10 +37,20 @@ class AddMovieForm extends Component {
   }
 
   renderField(field){
+    const { meta: { touched, error } } = field;
+    const className = touched && error ? 'error__input' : "";
     return (
-      <input type="text" placeholder={field.placeholder}
-        {...field.input}
-      />
+      <div>
+        <input 
+        type="text" 
+        placeholder={field.placeholder}
+        className={className}
+          {...field.input}
+        />
+        <div className="error__text">
+          {touched ? error : ""}
+        </div> 
+      </div> 
     );
   }
 
@@ -52,7 +62,26 @@ class AddMovieForm extends Component {
   }
 }
 
+const validate = values => {
+  const errors = {};
+  const yearRE = /\d{4}/;
+  if (!values.title){
+    errors.title = "Enter a title"
+  }
+  if (!yearRE.test(values.year)){
+    errors.year = "Match the format requested (YYYY)"
+  } 
+  if (!values.year){
+    errors.year = "Enter a year"
+  }
+  if (!values.description){
+    errors.description = "Enter a description"
+  }
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'addMovieForm'
 })(
   withRouter(
