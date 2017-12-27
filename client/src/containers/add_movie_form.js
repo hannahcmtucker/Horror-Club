@@ -63,20 +63,17 @@ class AddMovieForm extends Component {
 }
 
 const validate = values => {
+  const fields = ['title', 'year', 'description']
   const errors = {};
   const yearRE = /\d{4}/;
-  if (!values.title){
-    errors.title = "Enter a title"
-  }
   if (!yearRE.test(values.year)){
     errors.year = "Match the format requested (YYYY)"
   } 
-  if (!values.year){
-    errors.year = "Enter a year"
-  }
-  if (!values.description){
-    errors.description = "Enter a description"
-  }
+  fields.forEach(field => {
+    if (!values[field]){
+      errors[field] = `Enter a ${field}`
+    }
+  })
   return errors;
 }
 

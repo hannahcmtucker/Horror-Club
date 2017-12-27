@@ -143,6 +143,7 @@ a:hover {
 
 .error__text {
     color: #CF1C1D !important;
+    font-weight: bold;
     font-size: 0.85em;
 }
 
