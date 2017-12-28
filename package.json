@@ -1,0 +1,20 @@
+{
+    "name": "horror-club",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "cd client && npm install && webpack -p && cd ../server && npm install",
+        "start": "node ./server/src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hannahcmtucker/Horror-Club.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/hannahcmtucker/Horror-Club/issues"
+    },
+    "homepage": "https://github.com/hannahcmtucker/Horror-Club#readme"
+}
