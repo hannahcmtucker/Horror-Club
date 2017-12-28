@@ -4,8 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "postinstall": "cd client && npm install && webpack -p && cd ../server && npm install",
-        "start": "node ./server/src/index.js"
+        "postinstall": "webpack -p",
+        "start": "node ./server/src/index.js",
+        "nodemon": "nodemon ./server/src/index.js"
     },
     "repository": {
         "type": "git",
@@ -16,5 +17,33 @@
     "bugs": {
         "url": "https://github.com/hannahcmtucker/Horror-Club/issues"
     },
-    "homepage": "https://github.com/hannahcmtucker/Horror-Club#readme"
+    "homepage": "https://github.com/hannahcmtucker/Horror-Club#readme",
+    "dependencies": {
+        "axios": "^0.17.1",
+        "babel-preset-stage-1": "^6.24.1",
+        "body-parser": "^1.18.2",
+        "env2": "^2.2.0",
+        "express": "^4.16.2",
+        "lodash": "^4.17.4",
+        "pg-promise": "^7.3.2",
+        "query-string": "^5.0.1",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-redux": "^5.0.6",
+        "react-router": "^4.2.0",
+        "react-router-dom": "^4.2.2",
+        "redux": "^3.7.2",
+        "redux-form": "^7.2.0",
+        "redux-promise": "^0.5.3",
+        "serve-favicon": "^2.4.5"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "nodemon": "^1.14.3",
+        "webpack": "^3.10.0",
+        "webpack-dev-server": "^2.9.7"
+    }
 }
