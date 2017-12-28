@@ -2,7 +2,7 @@ const pgp = require('pg-promise')();
 const env = require('env2')('./config.env');
 const url = require('url');
 
-const params = url.parse(process.env.HEROKU_DB);
+const params = url.parse(process.env.DATABASE_URL);
 const [username, password] = params.auth.split(':');
 
 const herokuDB = {
