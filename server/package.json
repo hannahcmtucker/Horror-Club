@@ -15,7 +15,8 @@
         "env2": "^2.2.0",
         "express": "^4.16.2",
         "pg-promise": "^7.3.2",
-        "query-string": "^5.0.1"
+        "query-string": "^5.0.1",
+        "serve-favicon": "^2.4.5"
     },
     "devDependencies": {
         "nodemon": "^1.14.3",

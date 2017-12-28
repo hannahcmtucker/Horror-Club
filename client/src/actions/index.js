@@ -4,10 +4,8 @@ export const FETCH_MOVIES = 'FETCH_MOVIES';
 export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const ADD_MOVIE = 'ADD_MOVIE';
 
-const ROOT_URL = 'http://localhost:3000';
-
 export const fetchMovies = () => {
-    const request = axios.get(ROOT_URL)
+    const request = axios.get('/api/movies')
     return {
       type: FETCH_MOVIES,
       payload: request
@@ -15,7 +13,7 @@ export const fetchMovies = () => {
 }
 
 export const fetchMovie = (id) => {
-  const request = axios.get(`${ROOT_URL}/movie/${id}`)
+  const request = axios.get(`/api/movie/${id}`)
   return{
     type: FETCH_MOVIE,
     payload: request
@@ -23,7 +21,7 @@ export const fetchMovie = (id) => {
 }
 
 export const addMovie = (values, cb) => {
-  const request = axios.post(`${ROOT_URL}/addMovie`, values)
+  const request = axios.post('/api/addMovie', values)
   .then((req) => cb(req))
 
   return {
