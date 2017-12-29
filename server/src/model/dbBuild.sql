@@ -2,12 +2,20 @@ BEGIN;
 
 DROP TABLE IF EXISTS movies CASCADE;
 
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE movies (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     year VARCHAR(4) NOT NULL,
     description TEXT
 );
+
+INSERT INTO users (username, password) VALUES ('Mike', 'horrorshow'), ('Jim', 'password');
 
 INSERT INTO movies(title, year, description) VALUES
 ('I walked with a Zombie', '1943', 'Evocative direction'),

@@ -14,8 +14,14 @@ const addMovie = (movie) => {
   .then(id => id[0])
 }
 
+const getUser = username => {
+  return db.query('SELECT * FROM users WHERE username = $1', [username])
+  .then(user => user[0])
+}
+
 module.exports = {
   getMovies,
   getMovie,
-  addMovie
+  addMovie,
+  getUser
 }

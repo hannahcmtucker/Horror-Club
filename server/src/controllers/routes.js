@@ -1,35 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const queries = require('./queries');
+const passport = require('passport');
+const passportService = require('../services/passport');
 
-router.get('/movies', (req, res) => {
-  queries
-  .getMovies()
-  .then (movies => {
-    res.send(movies)
-  })
-  .catch(console.log)
-})
+const { getMovies, getMovie, postMovie } = require('./api_requests');
+const { signIn } = require('./authentication');
 
-router.get('/movie/:id', (req, res) => {
-  const { id } = req.params;
-  queries
-  .getMovie(id)
-  .then (movie => {
-    res.send(movie)
-  })
-  .catch(console.log)
-})
 
-router.post('/addMovie', (req, res) => {
-  const { body } = req;
-  queries
-  .addMovie(body)
-  .then(id => {
-    res.send(id)
-  })
-  .catch(console.log)
-})
+const requireSignin = passport.authenticate('local', { session: false })
+
+
+router.post('/signin', requireSignin, signIn)
+
+router.get('/movies', getMovies)
+router.get('/movie/:id', getMovie)
+router.post('/addMovie', postMovie)
 
 module.exports = router;
