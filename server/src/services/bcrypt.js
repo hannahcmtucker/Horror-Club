@@ -11,9 +11,9 @@ const comparePassword = (candidatePassword, user) => {
 
 const hashPassword = (password) => {
   return new Promise((resolve, reject) => {
-    bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.genSalt(10, (err, salt) => {
       if (err) { reject(err.message) }
-      bcrypt.hash(password, salt, null, function (err, hash) {
+      bcrypt.hash(password, salt, null, (err, hash) => {
         if (err) { reject(err.message) }
         resolve(hash);
       })
@@ -22,5 +22,6 @@ const hashPassword = (password) => {
 };
 
 module.exports = {
-  comparePassword
+  comparePassword,
+  hashPassword
 }

@@ -15,7 +15,7 @@ CREATE TABLE movies (
     description TEXT
 );
 
-INSERT INTO users (username, password) VALUES ('Mike', 'horrorshow'), ('Jim', 'password');
+INSERT INTO users (username, password) VALUES ('Mike', '$2a$10$HEyV6U.nsK.0I4ICu.2tZO.Le09Kt0ni8Wl4NJChqDnvWVKDwptCq'), ('Jim', '$2a$10$HEyV6U.nsK.0I4ICu.2tZO.Le09Kt0ni8Wl4NJChqDnvWVKDwptCq');
 
 INSERT INTO movies(title, year, description) VALUES
 ('I walked with a Zombie', '1943', 'Evocative direction'),

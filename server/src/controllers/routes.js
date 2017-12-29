@@ -4,12 +4,12 @@ const passport = require('passport');
 const passportService = require('../services/passport');
 
 const { getMovies, getMovie, postMovie } = require('./api_requests');
-const { signIn } = require('./authentication');
+const { signIn, signUp } = require('./authentication');
 
 
 const requireSignin = passport.authenticate('local', { session: false })
 
-
+router.post('/signup', signUp)
 router.post('/signin', requireSignin, signIn)
 
 router.get('/movies', getMovies)

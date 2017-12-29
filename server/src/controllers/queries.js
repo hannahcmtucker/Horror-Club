@@ -19,9 +19,15 @@ const getUser = username => {
   .then(user => user[0])
 }
 
+const addUser = (username, password) => {
+  return db.query(`INSERT INTO users (username, password) VALUES($1,$2) RETURNING USERNAME, ID`, [username, password])
+  .then(user => user[0]);
+}; 
+
 module.exports = {
   getMovies,
   getMovie,
   addMovie,
-  getUser
+  getUser,
+  addUser
 }
