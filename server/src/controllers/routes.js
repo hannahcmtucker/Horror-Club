@@ -6,7 +6,7 @@ const passportService = require('../services/passport');
 const { getMovies, getMovie, postMovie } = require('./api_requests');
 const { signIn, signUp } = require('./authentication');
 
-
+const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false })
 
 router.post('/signup', signUp)
