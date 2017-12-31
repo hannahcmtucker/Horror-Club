@@ -5,7 +5,9 @@ export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const ADD_MOVIE = 'ADD_MOVIE';
 
 /*AUTH*/
-
+export const signinUser = () => {
+  
+}
 
 /*MOVIES*/
 export const fetchMovies = () => {

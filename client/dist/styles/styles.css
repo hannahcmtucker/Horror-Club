@@ -94,6 +94,71 @@ a:hover {
   $movies index 
 ***********************************************/
 
+.signin_flex_container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin_flex_inner {
+    background-color: rgba(12, 18, 12, 0.7);
+    width: 60%;
+    height: auto;
+    display: flex;
+    padding: 1rem;
+    box-shadow: 2px 3px 5px black;
+    border-radius: 5px;
+}
+
+.signup,
+.signin {
+    width: 50%;
+}
+
+.signup__form,
+.signin__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.signup__header,
+.signin__header {
+    margin: 1em 10%;
+    letter-spacing: 0.5px;
+    font-size: 1.5em;
+}
+
+.signup__form input,
+.signin__form input {
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 0.9em;
+    text-align: center;
+    width: 80%;
+    height: 3rem;
+    margin-bottom: 1rem;
+    border: 1px solid white;
+    background: white;
+    border-radius: 5px;
+}
+
+.signin_submit {
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 1px;
+    background-color: #0C120C !important;
+    border: 1px solid #0C120C !important;
+    color: #CF1C1D;
+    margin-top: 10px;
+}
+
+
+/***********************************************
+  $movies index 
+***********************************************/
+
 .flex_container {
     display: flex;
     margin-bottom: auto;

@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import promise from 'redux-promise';
 
 import reducers from './reducers';
+import Auth from './containers/auth/auth_index';
 import MoviesIndex from './containers/movies/movies_index';
 import MovieDetail from './containers/movies/movie_detail';
 
@@ -17,7 +18,8 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/movie/:id" component={MovieDetail} />
-          <Route path="/" component={MoviesIndex} />
+          <Route path="/movies" component={MoviesIndex} />
+          <Route path="/" component={Auth} />
         </Switch>
       </div>
     </BrowserRouter>
