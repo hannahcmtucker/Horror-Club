@@ -30,10 +30,18 @@ class Signin extends Component {
   }
 
   renderField(field){
-    return (
+    const { meta: { touched, error } } = field;
+    const className = touched && error ? 'error__input' : "";
+    return ([
         <input {...field.input} 
         type={field.type} 
-        placeholder={field.placeholder}/>
+        placeholder={field.placeholder}
+        className={className} 
+        key={1}/>,
+        <div className="error__text" key={2}>
+          {touched ? error : ""}
+        </div> 
+      ]
     );
   }
 
@@ -46,7 +54,19 @@ class Signin extends Component {
   }
 }
 
+const validate = (values) => {
+  const errors = {};
+  if (!values.username) {
+    errors.username = "Enter a username"
+  }
+  if (!values.password) {
+    errors.password = "Enter a password"
+  }
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'signin'
 })(
   connect (null, { signinUser })(Signin)

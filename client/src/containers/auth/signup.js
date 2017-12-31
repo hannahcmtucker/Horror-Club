@@ -36,10 +36,18 @@ class Signup extends Component {
   }
 
   renderField(field){
-    return (
+    const { meta: { touched, error } } = field;
+    const className = touched && error ? 'error__input' : "";
+    return ([
         <input {...field.input} 
         type={field.type} 
-        placeholder={field.placeholder}/>
+        placeholder={field.placeholder}
+        className={className} 
+        key={1}/>,
+        <div className="error__text" key={2}>
+          {touched ? error : ""}
+        </div> 
+      ]
     );
   }
 
@@ -52,7 +60,25 @@ class Signup extends Component {
   }
 }
 
+const validate = (values) => {
+  const errors = {};
+  if (!values.username) {
+    errors.username = "Enter your username"
+  }
+  if (!values.password) {
+    errors.password = "Enter a password"
+  }
+  if (!values.confirmpassword) {
+    errors.confirmpassword = "Enter a password confirmation"
+  }
+  if (values.password != values.confirmpassword){
+    errors.confirmpassword = "Passwords do not match"
+  }
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'signup'
 })(
   connect (null, { signupUser })(Signup)

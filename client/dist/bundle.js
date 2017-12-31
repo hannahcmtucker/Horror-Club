@@ -39129,9 +39129,20 @@ var Signup = function (_Component) {
   }, {
     key: 'renderField',
     value: function renderField(field) {
-      return _react2.default.createElement('input', _extends({}, field.input, {
+      var _field$meta = field.meta,
+          touched = _field$meta.touched,
+          error = _field$meta.error;
+
+      var className = touched && error ? 'error__input' : "";
+      return [_react2.default.createElement('input', _extends({}, field.input, {
         type: field.type,
-        placeholder: field.placeholder }));
+        placeholder: field.placeholder,
+        className: className,
+        key: 1 })), _react2.default.createElement(
+        'div',
+        { className: 'error__text', key: 2 },
+        touched ? error : ""
+      )];
     }
   }, {
     key: 'handleFormSubmit',
@@ -39146,7 +39157,25 @@ var Signup = function (_Component) {
   return Signup;
 }(_react.Component);
 
+var validate = function validate(values) {
+  var errors = {};
+  if (!values.username) {
+    errors.username = "Enter your username";
+  }
+  if (!values.password) {
+    errors.password = "Enter a password";
+  }
+  if (!values.confirmpassword) {
+    errors.confirmpassword = "Enter a password confirmation";
+  }
+  if (values.password != values.confirmpassword) {
+    errors.confirmpassword = "Passwords do not match";
+  }
+  return errors;
+};
+
 exports.default = (0, _reduxForm.reduxForm)({
+  validate: validate,
   form: 'signup'
 })((0, _reactRedux.connect)(null, { signupUser: _index.signupUser })(Signup));
 
@@ -39228,9 +39257,20 @@ var Signin = function (_Component) {
   }, {
     key: 'renderField',
     value: function renderField(field) {
-      return _react2.default.createElement('input', _extends({}, field.input, {
+      var _field$meta = field.meta,
+          touched = _field$meta.touched,
+          error = _field$meta.error;
+
+      var className = touched && error ? 'error__input' : "";
+      return [_react2.default.createElement('input', _extends({}, field.input, {
         type: field.type,
-        placeholder: field.placeholder }));
+        placeholder: field.placeholder,
+        className: className,
+        key: 1 })), _react2.default.createElement(
+        'div',
+        { className: 'error__text', key: 2 },
+        touched ? error : ""
+      )];
     }
   }, {
     key: 'handleFormSubmit',
@@ -39245,7 +39285,19 @@ var Signin = function (_Component) {
   return Signin;
 }(_react.Component);
 
+var validate = function validate(values) {
+  var errors = {};
+  if (!values.username) {
+    errors.username = "Enter your username";
+  }
+  if (!values.password) {
+    errors.password = "Enter a password";
+  }
+  return errors;
+};
+
 exports.default = (0, _reduxForm.reduxForm)({
+  validate: validate,
   form: 'signin'
 })((0, _reactRedux.connect)(null, { signinUser: _index.signinUser })(Signin));
 
@@ -56551,20 +56603,16 @@ var AddMovieForm = function (_Component) {
           error = _field$meta.error;
 
       var className = touched && error ? 'error__input' : "";
-      return _react2.default.createElement(
+      return [_react2.default.createElement('input', _extends({
+        type: 'text',
+        placeholder: field.placeholder,
+        className: className,
+        key: 1
+      }, field.input)), _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement('input', _extends({
-          type: 'text',
-          placeholder: field.placeholder,
-          className: className
-        }, field.input)),
-        _react2.default.createElement(
-          'div',
-          { className: 'error__text' },
-          touched ? error : ""
-        )
-      );
+        { key: 2, className: 'error__text' },
+        touched ? error : ""
+      )];
     }
   }, {
     key: 'onSubmit',
@@ -56711,7 +56759,7 @@ var MovieDetail = function (_Component) {
           { className: 'singlemovie' },
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/' },
+            { to: '/movies' },
             'Back to All Movies'
           ),
           _react2.default.createElement(

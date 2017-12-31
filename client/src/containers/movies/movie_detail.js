@@ -17,7 +17,7 @@ class MovieDetail extends Component {
       <div>
         <NavBar />
           <section className="singlemovie">
-            <Link to="/">Back to All Movies</Link>
+            <Link to="/movies">Back to All Movies</Link>
             <h2 className="singlemovie__title">{this.props.movie.title}</h2>
             <p className="singlemovie__year">{this.props.movie.year}</p>
             <p className="singlemovie__description">{this.props.movie.description}</p>

@@ -39,18 +39,18 @@ class AddMovieForm extends Component {
   renderField(field){
     const { meta: { touched, error } } = field;
     const className = touched && error ? 'error__input' : "";
-    return (
-      <div>
+    return ([
         <input 
         type="text" 
         placeholder={field.placeholder}
         className={className}
+        key={1}
           {...field.input}
-        />
-        <div className="error__text">
+        />,
+        <div key={2} className="error__text">
           {touched ? error : ""}
         </div> 
-      </div> 
+      ]
     );
   }
 
