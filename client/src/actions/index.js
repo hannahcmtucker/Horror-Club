@@ -6,6 +6,10 @@ export const ADD_MOVIE = 'ADD_MOVIE';
 
 /*AUTH*/
 export const signinUser = () => {
+
+}
+
+export const signupUser = () => {
   
 }
 

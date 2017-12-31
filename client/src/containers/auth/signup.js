@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { signinUser } from '../../actions/index';
+import { signupUser } from '../../actions/index';
 
-class Signin extends Component {
+class Signup extends Component {
   render () {
     const { handleSubmit } = this.props;
     return (
-      <section className="signin">
-        <h2 className="signin__header">Signin</h2>
-        <form className="signin__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <section className="signup">
+        <h2 className="signup__header">Signup</h2>
+        <form className="signup__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <Field
               name="username"
               type="text"
@@ -21,7 +21,13 @@ class Signin extends Component {
               type="password"
               placeholder="Password"
               component={this.renderField}
-            />     
+            />  
+          <Field
+              name="confirmpassword"
+              type="password"
+              placeholder="Confirm password"
+              component={this.renderField}
+            />    
           {this.renderAlert()}  
           <input className="signin_submit" type="Submit" defaultValue="Submit" />
         </form> 
@@ -38,7 +44,7 @@ class Signin extends Component {
   }
 
   handleFormSubmit(values){
-    this.props.signinUser(values);
+    this.props.signupUser(values);
   }
 
   renderAlert(){
@@ -47,7 +53,7 @@ class Signin extends Component {
 }
 
 export default reduxForm({
-  form: 'signin'
+  form: 'signup'
 })(
-  connect (null, { signinUser })(Signin)
+  connect (null, { signupUser })(Signup)
 )
