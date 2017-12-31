@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import promise from 'redux-promise';
 
 import reducers from './reducers';
-import MoviesIndex from './containers/movies_index';
-import MovieDetail from './containers/movie_detail';
+import MoviesIndex from './containers/movies/movies_index';
+import MovieDetail from './containers/movies/movie_detail';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { fetchMovie } from '../actions/index';
+import { fetchMovie } from '../../actions/index';
 
-import NavBar from '../components/nav_bar';
-import Footer from '../components/footer';
+import NavBar from '../../components/nav_bar';
+import Footer from '../../components/footer';
 
 class MovieDetail extends Component {
   render(){

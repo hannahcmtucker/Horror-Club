@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { withRouter } from 'react-router'
-import { addMovie } from '../actions/index';
+import { addMovie } from '../../actions/index';
 
 class AddMovieForm extends Component {
   render(){
