@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node ./server/src/index.js",
-        "nodemon": "nodemon ./server/src/index.js"
+        "nodemon": "webpack && nodemon ./server/src/index.js"
     },
     "repository": {
         "type": "git",
@@ -39,6 +39,7 @@
         "redux": "^3.7.2",
         "redux-form": "^7.2.0",
         "redux-promise": "^0.5.3",
+        "redux-thunk": "^2.2.0",
         "serve-favicon": "^2.4.5"
     },
     "devDependencies": {

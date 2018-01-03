@@ -14,7 +14,7 @@ exports.signIn = (req, res) => {
 
 exports.signUp = (req, res, next) => {
   const { username, password } = req.body;
-
+  
   if (!username || !password){
     return res.status(422).send({ error: 'You must provide email and password'})
   }

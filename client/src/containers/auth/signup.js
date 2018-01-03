@@ -56,7 +56,13 @@ class Signup extends Component {
   }
 
   renderAlert(){
-    
+    if (this.props.error){
+      return (
+          <p className="error__text">
+            <strong>Oops!</strong> {this.props.error}
+          </p>
+      );
+    }
   }
 }
 
@@ -77,9 +83,13 @@ const validate = (values) => {
   return errors;
 }
 
+const mapStateToProps = (state) => {
+  return { error: state.auth.error }
+}
+
 export default reduxForm({
   validate,
   form: 'signup'
 })(
-  connect (null, { signupUser })(Signup)
+  connect (mapStateToProps, { signupUser })(Signup)
 )

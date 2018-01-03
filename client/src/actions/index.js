@@ -1,16 +1,35 @@
 import axios from 'axios';
+import history from './history';
 
 export const FETCH_MOVIES = 'FETCH_MOVIES';
 export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const ADD_MOVIE = 'ADD_MOVIE';
+export const AUTH_USER = 'AUTH_USER';
+export const AUTH_ERROR = 'AUTH_ERROR';
 
 /*AUTH*/
-export const signinUser = () => {
-
+export const signinUser = (values) => {
 }
 
-export const signupUser = () => {
-  
+export const signupUser = (values) => {
+  return (dispatch) => {
+    axios.post('api/signup', values)
+    .then(response => {
+      dispatch({ type: AUTH_USER });
+      localStorage.setItem('token', response.data.token);
+      history.push('/movies');
+    })
+    .catch(error => {
+      dispatch(authError(error.response.data.error));
+    })
+  } 
+}
+
+export const authError = (error) => {
+  return {
+    type: AUTH_ERROR,
+    payload: error
+  };
 }
 
 /*MOVIES*/
