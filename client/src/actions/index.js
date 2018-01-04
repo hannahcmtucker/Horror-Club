@@ -6,6 +6,7 @@ export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const UNAUTH_USER = 'UNAUTH_USER';
 
 /*AUTH*/
 export const signinUser = ({ username, password }) => {
@@ -36,12 +37,19 @@ export const signupUser = (values) => {
   } 
 }
 
+export const signoutUser = () => {
+  localStorage.removeItem('token');
+  return { type: UNAUTH_USER };
+  
+}
+
 export const authError = (error) => {
   return {
     type: AUTH_ERROR,
     payload: error
   };
 }
+
 
 /*MOVIES*/
 export const fetchMovies = () => {
