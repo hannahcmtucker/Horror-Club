@@ -1,4 +1,4 @@
-import { FETCH_MOVIES, FETCH_MOVIE } from '../actions/index';
+import { FETCH_MOVIES, FETCH_MOVIE } from '../actions/movies';
 
 export default (state = {}, action) => {
   switch (action.type){

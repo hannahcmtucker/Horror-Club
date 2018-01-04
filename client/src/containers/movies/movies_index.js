@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 
-import { fetchMovies } from '../../actions/index';
+import { fetchMovies } from '../../actions/movies';
 import NavBar from '../../containers/nav_bar';
 import Footer from '../../components/footer';
 import ReduxForm from './add_movie_form';

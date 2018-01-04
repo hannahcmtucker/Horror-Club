@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { signinUser } from '../../actions/index';
+import { signinUser } from '../../actions/auth';
 
 class Signin extends Component {
   render () {

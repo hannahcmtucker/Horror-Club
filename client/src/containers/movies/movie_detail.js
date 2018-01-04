@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { fetchMovie } from '../../actions/index';
+import { fetchMovie } from '../../actions/movies';
 
 import NavBar from '../../containers/nav_bar';
 import Footer from '../../components/footer';
