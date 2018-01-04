@@ -9,7 +9,8 @@ const userToken = (user) => {
 
 
 exports.signIn = (req, res) => {
-  res.json({ token: userToken(req.user) });
+  res.json({ token: userToken(req.user), 
+             username: req.user.username});
 }
 
 exports.signUp = (req, res, next) => {
@@ -31,7 +32,8 @@ exports.signUp = (req, res, next) => {
     return queries.addUser(username, hash)
   })
   .then(user => {
-    res.json({ token: userToken(user) });
+    res.json({ token: userToken(user),
+               username: req.user.username});
   })
   .catch(next)
 }

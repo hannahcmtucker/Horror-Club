@@ -13,7 +13,8 @@ export const signinUser = ({ username, password }) => {
   return (dispatch) => {
     axios.post('api/signin', { username, password })
     .then(response => {
-      dispatch({ type: AUTH_USER });
+      dispatch({ type: AUTH_USER,
+                       payload: response.data.username });
       localStorage.setItem('token', response.data.token);
       history.push('/movies');
     })
@@ -27,7 +28,8 @@ export const signupUser = (values) => {
   return (dispatch) => {
     axios.post('api/signup', values)
     .then(response => {
-      dispatch({ type: AUTH_USER });
+      dispatch({ type: AUTH_USER,
+                 payload: response.data.username});
       localStorage.setItem('token', response.data.token);
       history.push('/movies');
     })

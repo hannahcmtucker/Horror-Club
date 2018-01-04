@@ -973,7 +973,8 @@ var signinUser = exports.signinUser = function signinUser(_ref) {
 
   return function (dispatch) {
     _axios2.default.post('api/signin', { username: username, password: password }).then(function (response) {
-      dispatch({ type: AUTH_USER });
+      dispatch({ type: AUTH_USER,
+        payload: response.data.username });
       localStorage.setItem('token', response.data.token);
       _history2.default.push('/movies');
     }).catch(function (error) {
@@ -985,7 +986,8 @@ var signinUser = exports.signinUser = function signinUser(_ref) {
 var signupUser = exports.signupUser = function signupUser(values) {
   return function (dispatch) {
     _axios2.default.post('api/signup', values).then(function (response) {
-      dispatch({ type: AUTH_USER });
+      dispatch({ type: AUTH_USER,
+        payload: response.data.username });
       localStorage.setItem('token', response.data.token);
       _history2.default.push('/movies');
     }).catch(function (error) {
@@ -8046,6 +8048,13 @@ var NavBar = function (_Component) {
               'li',
               { className: 'navbar__title' },
               _react2.default.createElement(
+                'p',
+                null,
+                'Hello ',
+                this.props.username,
+                ' '
+              ),
+              _react2.default.createElement(
                 _reactRouterDom.Link,
                 { to: '/', onClick: this.signOut.bind(this) },
                 'Logout'
@@ -8065,7 +8074,12 @@ var NavBar = function (_Component) {
   return NavBar;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)(null, { signoutUser: _index.signoutUser })(NavBar);
+var mapStateToProps = function mapStateToProps(state) {
+  console.log("mstp", state);
+  return { username: state.auth.username };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { signoutUser: _index.signoutUser })(NavBar);
 
 /***/ }),
 /* 139 */
@@ -39144,7 +39158,7 @@ exports.default = function () {
 
   switch (action.type) {
     case _index.AUTH_USER:
-      return _extends({}, state, { authenticated: true, error: '' });
+      return _extends({}, state, { authenticated: true, username: action.payload, error: '' });
     case _index.UNAUTH_USER:
       return _extends({}, state, { authenticated: false });
     case _index.AUTH_ERROR:

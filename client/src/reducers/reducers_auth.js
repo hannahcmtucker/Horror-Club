@@ -3,7 +3,7 @@ import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from '../actions/index';
 export default (state = {}, action) => {
   switch(action.type){
     case AUTH_USER:
-      return { ...state, authenticated: true, error: ''};
+      return { ...state, authenticated: true, username: action.payload, error: ''};
     case UNAUTH_USER:
       return { ...state, authenticated: false};  
     case AUTH_ERROR:
