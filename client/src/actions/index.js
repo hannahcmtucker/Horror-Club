@@ -42,7 +42,6 @@ export const signupUser = (values) => {
 export const signoutUser = () => {
   localStorage.removeItem('token');
   return { type: UNAUTH_USER };
-  
 }
 
 export const authError = (error) => {
@@ -55,27 +54,47 @@ export const authError = (error) => {
 
 /*MOVIES*/
 export const fetchMovies = () => {
-    const request = axios.get('/api/movies')
-    return {
-      type: FETCH_MOVIES,
-      payload: request
-    }
-}
-
-export const fetchMovie = (id) => {
-  const request = axios.get(`/api/movie/${id}`)
-  return{
-    type: FETCH_MOVIE,
-    payload: request
+  return(dispatch) => {
+    axios.get('/api/movies', {
+      headers: {authorization: localStorage.getItem('token')}
+    })
+    .then(response => {
+      dispatch({
+        type: FETCH_MOVIES,
+        payload: response.data
+      })
+    })
+    .catch(err => console.log)
   }
 }
 
-export const addMovie = (values, cb) => {
-  const request = axios.post('/api/addMovie', values)
-  .then((req) => cb(req))
+export const fetchMovie = (id) => {
+  return(dispatch) => {
+    axios.get(`/api/movie/${id}`, {
+      headers: {authorization: localStorage.getItem('token')}
+    })
+    .then(response => {
+      dispatch({
+        type: FETCH_MOVIE,
+        payload: response.data
+      })
+    })
+    .catch(err => console.log)
+  }
+}
 
-  return {
-    type: ADD_MOVIE,
-    payload: request
+export const addMovie = (values) => {
+  return(dispatch) => {
+    axios.post('/api/addmovie', values, {
+      headers: {authorization: localStorage.getItem('token')}
+    })
+    .then(response => {
+      const { id } = response.data
+      history.push(`/movie/${id}`)
+      dispatch({
+        type: ADD_MOVIE,
+      })
+    })
+    .catch(err => console.log)
   }
 }

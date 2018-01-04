@@ -12,8 +12,8 @@ const requireSignin = passport.authenticate('local', { session: false })
 router.post('/signup', signUp)
 router.post('/signin', requireSignin, signIn)
 
-router.get('/movies', getMovies)
-router.get('/movie/:id', getMovie)
-router.post('/addMovie', postMovie)
+router.get('/movies', requireAuth, getMovies)
+router.get('/movie/:id', requireAuth, getMovie)
+router.post('/addmovie', requireAuth, postMovie)
 
 module.exports = router;

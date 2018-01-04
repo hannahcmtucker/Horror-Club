@@ -55,10 +55,7 @@ class AddMovieForm extends Component {
   }
 
   onSubmit(values){
-    this.props.addMovie(values, (req) => {
-      const { id } = JSON.parse(req.request.response)
-      this.props.history.push(`/movie/${id}`)
-    })
+    this.props.addMovie(values);
   }
 }
 

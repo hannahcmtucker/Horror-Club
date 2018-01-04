@@ -36,7 +36,6 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mstp", state)
   return {username: state.auth.username}
 }
 

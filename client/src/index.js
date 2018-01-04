@@ -7,6 +7,7 @@ import history from './actions/history';
 import promise from 'redux-promise';
 import reduxThunk from 'redux-thunk';
 
+import RequireAuth from './containers/auth/require_auth_hoc';
 import reducers from './reducers';
 import Auth from './containers/auth/auth_index';
 import MoviesIndex from './containers/movies/movies_index';
@@ -19,8 +20,8 @@ ReactDOM.render(
     <Router history={history}>
       <div>
         <Switch>
-          <Route path="/movie/:id" component={MovieDetail} />
-          <Route path="/movies" component={MoviesIndex} />
+          <Route path="/movie/:id" component={RequireAuth(MovieDetail)} />
+          <Route path="/movies" component={RequireAuth(MoviesIndex)} />
           <Route path="/" component={Auth} />
         </Switch>
       </div>
