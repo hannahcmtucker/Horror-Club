@@ -8,7 +8,18 @@ export const AUTH_USER = 'AUTH_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
 /*AUTH*/
-export const signinUser = (values) => {
+export const signinUser = ({ username, password }) => {
+  return (dispatch) => {
+    axios.post('api/signin', { username, password })
+    .then(response => {
+      dispatch({ type: AUTH_USER });
+      localStorage.setItem('token', response.data.token);
+      history.push('/movies');
+    })
+    .catch(error => {
+      dispatch(authError('Username or password was incorrect'));
+    })
+  } 
 }
 
 export const signupUser = (values) => {

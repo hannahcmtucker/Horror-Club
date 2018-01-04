@@ -46,11 +46,18 @@ class Signin extends Component {
   }
 
   handleFormSubmit(values){
-    this.props.signinUser(values);
+    const { username, password } = values;
+    this.props.signinUser({ username, password });
   }
 
   renderAlert(){
-    
+    if (this.props.error){
+      return (
+          <p className="error__text">
+            <strong>Oops!</strong> {this.props.error}
+          </p>
+      );
+    } 
   }
 }
 
@@ -65,9 +72,13 @@ const validate = (values) => {
   return errors;
 }
 
+const mapStateToProps = (state) => {
+  return { error: state.auth.error }
+}
+
 export default reduxForm({
   validate,
   form: 'signin'
 })(
-  connect (null, { signinUser })(Signin)
+  connect (mapStateToProps, { signinUser })(Signin)
 )

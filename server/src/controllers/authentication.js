@@ -9,7 +9,7 @@ const userToken = (user) => {
 
 
 exports.signIn = (req, res) => {
-  res.send(req.user)
+  res.json({ token: userToken(req.user) });
 }
 
 exports.signUp = (req, res, next) => {

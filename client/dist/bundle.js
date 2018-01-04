@@ -1028,7 +1028,20 @@ var AUTH_USER = exports.AUTH_USER = 'AUTH_USER';
 var AUTH_ERROR = exports.AUTH_ERROR = 'AUTH_ERROR';
 
 /*AUTH*/
-var signinUser = exports.signinUser = function signinUser(values) {};
+var signinUser = exports.signinUser = function signinUser(_ref) {
+  var username = _ref.username,
+      password = _ref.password;
+
+  return function (dispatch) {
+    _axios2.default.post('api/signin', { username: username, password: password }).then(function (response) {
+      dispatch({ type: AUTH_USER });
+      localStorage.setItem('token', response.data.token);
+      _history2.default.push('/movies');
+    }).catch(function (error) {
+      dispatch(authError('Username or password was incorrect'));
+    });
+  };
+};
 
 var signupUser = exports.signupUser = function signupUser(values) {
   return function (dispatch) {
@@ -39403,11 +39416,28 @@ var Signin = function (_Component) {
   }, {
     key: 'handleFormSubmit',
     value: function handleFormSubmit(values) {
-      this.props.signinUser(values);
+      var username = values.username,
+          password = values.password;
+
+      this.props.signinUser({ username: username, password: password });
     }
   }, {
     key: 'renderAlert',
-    value: function renderAlert() {}
+    value: function renderAlert() {
+      if (this.props.error) {
+        return _react2.default.createElement(
+          'p',
+          { className: 'error__text' },
+          _react2.default.createElement(
+            'strong',
+            null,
+            'Oops!'
+          ),
+          ' ',
+          this.props.error
+        );
+      }
+    }
   }]);
 
   return Signin;
@@ -39424,10 +39454,14 @@ var validate = function validate(values) {
   return errors;
 };
 
+var mapStateToProps = function mapStateToProps(state) {
+  return { error: state.auth.error };
+};
+
 exports.default = (0, _reduxForm.reduxForm)({
   validate: validate,
   form: 'signin'
-})((0, _reactRedux.connect)(null, { signinUser: _index.signinUser })(Signin));
+})((0, _reactRedux.connect)(mapStateToProps, { signinUser: _index.signinUser })(Signin));
 
 /***/ }),
 /* 387 */
