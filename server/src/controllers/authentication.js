@@ -33,7 +33,7 @@ exports.signUp = (req, res, next) => {
   })
   .then(user => {
     res.json({ token: userToken(user),
-               username: req.user.username});
+               username: user.username});
   })
   .catch(next)
 }
