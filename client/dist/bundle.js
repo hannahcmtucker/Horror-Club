@@ -39277,7 +39277,7 @@ exports.default = function () {
 
   switch (action.type) {
     case _auth.AUTH_USER:
-      return _extends({}, state, { authenticated: true, username: action.payload, error: '' });
+      return _extends({}, state, { authenticated: true, error: '' });
     case _auth.UNAUTH_USER:
       return _extends({}, state, { authenticated: false });
     case _auth.AUTH_ERROR:

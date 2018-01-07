@@ -10,10 +10,10 @@ class NavBar extends Component {
         <nav role="navigation">
             <ul className="navbar__list">
                 <li className="navbar__title">
-                    <Link to="/">
+                    <Link to="/movies">
                       <img className="navbar__handimg" src="../../dist/images/hand.png"/>
                     </Link>
-                    <Link to="/">
+                    <Link to="/movies">
                       <h3>HorrorClub</h3>
                     </Link>
                 </li>

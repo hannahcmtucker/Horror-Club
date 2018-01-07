@@ -27,7 +27,7 @@ class AddMovieForm extends Component {
           />
           <Field
             name="description"
-            placeholder="Add movie description (optional)"
+            placeholder="Add movie description"
             component={this.renderField}
           />
           <input className="sidebar_submit" type="submit" value="Submit" />
