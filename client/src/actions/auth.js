@@ -10,9 +10,9 @@ export const signinUser = ({ username, password }) => {
   return (dispatch) => {
     axios.post('api/signin', { username, password })
     .then(response => {
-      dispatch({ type: AUTH_USER,
-                       payload: response.data.username });
+      dispatch({ type: AUTH_USER });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       history.push('/movies');
     })
     .catch(error => {
@@ -25,9 +25,9 @@ export const signupUser = (values) => {
   return (dispatch) => {
     axios.post('api/signup', values)
     .then(response => {
-      dispatch({ type: AUTH_USER,
-                 payload: response.data.username});
+      dispatch({ type: AUTH_USER });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       history.push('/movies');
     })
     .catch(error => {
@@ -37,7 +37,7 @@ export const signupUser = (values) => {
 }
 
 export const signoutUser = () => {
-  localStorage.removeItem('token');
+  localStorage.clear();
   return { type: UNAUTH_USER };
 }
 

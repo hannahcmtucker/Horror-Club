@@ -21,7 +21,7 @@ class NavBar extends Component {
                     <p>What movie shall we watch next...?</p>
                 </li>
                 <li className="navbar__title">
-                  <p>Hello {this.props.username} </p>
+                  <p>Hello {localStorage.getItem('username')} </p>
                   <Link to='/' onClick={this.signOut.bind(this)}>Logout</Link>
                 </li>
             </ul>
@@ -35,8 +35,4 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {username: state.auth.username}
-}
-
-export default connect(mapStateToProps, { signoutUser })(NavBar);
+export default connect(null, { signoutUser })(NavBar);

@@ -1489,9 +1489,9 @@ var signinUser = exports.signinUser = function signinUser(_ref) {
 
   return function (dispatch) {
     _axios2.default.post('api/signin', { username: username, password: password }).then(function (response) {
-      dispatch({ type: AUTH_USER,
-        payload: response.data.username });
+      dispatch({ type: AUTH_USER });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       _history2.default.push('/movies');
     }).catch(function (error) {
       dispatch(authError('Username or password was incorrect'));
@@ -1502,9 +1502,9 @@ var signinUser = exports.signinUser = function signinUser(_ref) {
 var signupUser = exports.signupUser = function signupUser(values) {
   return function (dispatch) {
     _axios2.default.post('api/signup', values).then(function (response) {
-      dispatch({ type: AUTH_USER,
-        payload: response.data.username });
+      dispatch({ type: AUTH_USER });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       _history2.default.push('/movies');
     }).catch(function (error) {
       dispatch(authError(error.response.data.error));
@@ -1513,7 +1513,7 @@ var signupUser = exports.signupUser = function signupUser(values) {
 };
 
 var signoutUser = exports.signoutUser = function signoutUser() {
-  localStorage.removeItem('token');
+  localStorage.clear();
   return { type: UNAUTH_USER };
 };
 
@@ -8098,7 +8098,7 @@ var NavBar = function (_Component) {
                 'p',
                 null,
                 'Hello ',
-                this.props.username,
+                localStorage.getItem('username'),
                 ' '
               ),
               _react2.default.createElement(
@@ -8121,11 +8121,7 @@ var NavBar = function (_Component) {
   return NavBar;
 }(_react.Component);
 
-var mapStateToProps = function mapStateToProps(state) {
-  return { username: state.auth.username };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { signoutUser: _auth.signoutUser })(NavBar);
+exports.default = (0, _reactRedux.connect)(null, { signoutUser: _auth.signoutUser })(NavBar);
 
 /***/ }),
 /* 141 */
