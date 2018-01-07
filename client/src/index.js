@@ -12,11 +12,17 @@ import reducers from './reducers';
 import Auth from './containers/auth/auth_index';
 import MoviesIndex from './containers/movies/movies_index';
 import MovieDetail from './containers/movies/movie_detail';
+import { AUTH_USER } from './actions/auth';
 
 const createStoreWithMiddleware = applyMiddleware(promise, reduxThunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
+const token = localStorage.getItem('token');
+if(token){
+  store.dispatch( { type: AUTH_USER })
+}
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <Router history={history}>
       <div>
         <Switch>
