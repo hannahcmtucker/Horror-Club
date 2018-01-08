@@ -8069,12 +8069,12 @@ var NavBar = function (_Component) {
               { className: 'navbar__title' },
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/' },
+                { to: '/movies' },
                 _react2.default.createElement('img', { className: 'navbar__handimg', src: '../../dist/images/hand.png' })
               ),
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/' },
+                { to: '/movies' },
                 _react2.default.createElement(
                   'h3',
                   null,
@@ -56932,7 +56932,7 @@ var AddMovieForm = function (_Component) {
           }),
           _react2.default.createElement(_reduxForm.Field, {
             name: 'description',
-            placeholder: 'Add movie description (optional)',
+            placeholder: 'Add movie description',
             component: this.renderField
           }),
           _react2.default.createElement('input', { className: 'sidebar_submit', type: 'submit', value: 'Submit' })
